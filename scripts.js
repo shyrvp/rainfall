@@ -1,6 +1,6 @@
 //定义一个数组
-	var width = 450;
-	var height = 500;
+	var width = 225;
+	var height = 250;
 
 	//在 body 里添加一个 SVG 画布	
 	var svg = d3.select("svg")
@@ -51,29 +51,6 @@
 		.attr("width", xScale.rangeBand() - rectPadding )
 		.attr("height", function(d){
 			return height - padding.top - padding.bottom - yScale(d);
-		});
-
-	//添加文字元素
-	var texts = svg.selectAll(".MyText")
-		.data(dataset)
-		.enter()
-		.append("text")
-		.attr("class","MyText")
-		.attr("transform","translate(" + padding.left + "," + padding.top + ")")
-		.attr("x", function(d,i){
-			return xScale(i) + rectPadding/2;
-		} )
-		.attr("y",function(d){
-			return yScale(d);
-		})
-		.attr("dx",function(){
-			return (xScale.rangeBand() - rectPadding)/2;
-		})
-		.attr("dy",function(d){
-			return 20;
-		})
-		.text(function(d){
-			return d;
 		});
 
 	//添加x轴
